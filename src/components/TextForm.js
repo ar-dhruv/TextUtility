@@ -34,6 +34,18 @@ export default function TextForm(props) {
     setText(newText.join(" "));
     props.showAlert("Extra Spaces Removed", "success");
   };
+
+  const handleCapitalize = () => {
+    const mySentence = text;
+    const words = mySentence.split(" ");
+
+    for (let i = 0; i < words.length; i++) {
+      words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+
+    setText(words.join(" "));
+  };
+
   return (
     <>
       <div
@@ -59,28 +71,14 @@ export default function TextForm(props) {
           className="btn btn-primary my-3 mx-1 my-1"
           onClick={handleUpClick}
         >
-          Convert to UpperCase
+          UPPERCASE
         </button>
         <button
           disabled={text.length === 0}
           className="btn btn-primary my-3 mx-1 my-1"
           onClick={handleLowClick}
         >
-          Convert to LowerCase
-        </button>
-        <button
-          disabled={text.length === 0}
-          className="btn btn-primary my-3 mx-1 my-1"
-          onClick={handleClearClick}
-        >
-          Clear Text
-        </button>
-        <button
-          disabled={text.length === 0}
-          className="btn btn-primary my-3 mx-1 my-1"
-          onClick={handleCopy}
-        >
-          Copy Text
+          lowercase
         </button>
         <button
           disabled={text.length === 0}
@@ -88,6 +86,28 @@ export default function TextForm(props) {
           onClick={handleExtraSpaces}
         >
           Remove Extra Spaces
+        </button>
+
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary my-3 mx-1 my-1"
+          onClick={handleCapitalize}
+        >
+          Capitalize First Letter
+        </button>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-success my-3 mx-1 my-1"
+          onClick={handleCopy}
+        >
+          Copy Text
+        </button>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-danger my-3 mx-1 my-1"
+          onClick={handleClearClick}
+        >
+          Clear Text
         </button>
       </div>
       <div
